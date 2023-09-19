@@ -43,17 +43,22 @@
 <p><b data-stringify-type="bold">Follow-up:&nbsp;</b>If the string data type is mutable in your language, can&nbsp;you solve it&nbsp;<b data-stringify-type="bold">in-place</b>&nbsp;with&nbsp;<code data-stringify-type="code">O(1)</code>&nbsp;extra space?</p>
 
 # Intuition
-각각의 문자를 사이에 섞어 하나의 문자로 조합합니다.
-
+이 코드의 목적은 문자열에서 단어의 순서를 뒤집는 것입니다.
+이를 위해 주어진 문자열을 공백을 기준으로 분할하고,
+분할된 단어들을 뒤집은 후 다시 조합합니다.
 # Approach
-1. word1과 word2의 길이를 비교하여 새로 만들 문자의 최대 문자 길이를 정합니다.
-2. 각각의 문자의 길이가 i보다 작아질 때까지 반복하며 newString에 문자를 추가해줍니다.
-3. 모든 문자를 다 순회했다면, newString를 반환합니다.
+주어진 문자열을 공백을 기준으로 분할하여 배열로 변환합니다.
+빈 문자열을 제거하기 위해 배열을 필터링합니다.
+필터링된 배열을 뒤집습니다.
+뒤집힌 배열을 다시 공백으로 연결하여 최종 결과 문자열을 생성합니다.
 
 # Complexity
-- Time complexity:
- O(max(N, M))
-여기서 N은 word1의 길이이고, M은 word2의 길이입니다. 반복문은 두 문자열 중 더 긴 문자열의 길이를 기준으로 돌기 때문에 최대 문자열의 길이에 비례하는 시간이 걸립니다.
+- Time complexity:O(n) 
 
-- Space complexity:
-추가적인 메모리 공간을 사용하지 않고 문자열을 조합하므로 입력 문자열과 동일한 크기의 공간만 필요합니다.
+주어진 문자열의 길이에 선형 시간복잡도에 비례합니다.
+문자열을 분할하고, 필터링하며, 뒤집는 각 단계는 선형 시간에 작동합니다.
+
+- Space complexity:O(n) 
+
+입력 문자열과 동일한 크기의 배열이 생성되므로,
+공간 복잡도는 입력 문자열의 길이에 비례합니다.
